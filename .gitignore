@@ -22,3 +22,7 @@ Thumbs.db
 # Workspace leftovers
 ../.tmp/
 ../.pip-cache/
+
+# Local auth material (never commit)
+.auth/
+.ssh/
