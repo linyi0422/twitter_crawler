@@ -20,6 +20,11 @@ def main() -> None:
     parser.add_argument("--auth-token", required=True)
     parser.add_argument("--ct0", required=True)
     parser.add_argument("--tag", default=None, help="Output tag (default: <username>_<limit>)")
+    parser.add_argument(
+        "--author-id",
+        default=None,
+        help="Blogger ID prefix for photo naming (default: <username>)",
+    )
     args = parser.parse_args()
 
     tag = args.tag or f"{args.username}_{args.limit}"
@@ -62,11 +67,13 @@ def main() -> None:
     run(
         [
             sys.executable,
-            str(scripts / "rename_photos_by_tweet_date.py"),
+            str(scripts / "rename_photos_by_handle_date.py"),
             "--jsonl",
             str(jsonl),
             "--dir",
             str(photos),
+            "--author-id",
+            str(args.author_id or args.username),
         ],
         root,
     )
