@@ -2,6 +2,14 @@
 
 一个面向 `X (Twitter)` 长文内容的实用工具集，支持从热门榜抓取到最终中文精译 Markdown 的一键流水线。
 
+## 快速 SOP（3 行命令）
+
+```powershell
+python -m pip install -r requirements.txt
+python scripts/run_trending_tool.py --run-date 2026-03-05 --top-k 3 --auth-token <YOUR_AUTH_TOKEN> --ct0 <YOUR_CT0> --translator auto --openai-api-key <YOUR_OPENAI_API_KEY> --clean-output
+Get-ChildItem output/twitter_trending -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | % { Join-Path $_.FullName "final_full_zh/FULL_COMBINED.md" }
+```
+
 ## 核心能力
 
 - 抓取 `X` 长文热门 Top N（默认 Top 3）
