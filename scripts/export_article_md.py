@@ -177,11 +177,14 @@ def apply_bold_inline(text: str, inline_ranges: list[dict]) -> str:
 
 
 def download_to(client: httpx.Client, url: str, dst: Path) -> bool:
-    rep = client.get(url)
-    if rep.status_code != 200:
+    try:
+        rep = client.get(url)
+        if rep.status_code != 200:
+            return False
+        dst.write_bytes(rep.content)
+        return True
+    except Exception:
         return False
-    dst.write_bytes(rep.content)
-    return True
 
 
 def build_article_markdown(client: httpx.Client, tweet_obj: dict, tweet_id: str, out_dir: Path) -> tuple[Path, int, dict]:

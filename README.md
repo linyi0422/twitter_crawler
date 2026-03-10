@@ -123,3 +123,8 @@ python scripts/build_trending_markdown_bundle.py `
 
 - 不要提交 `auth_token`、`ct0`、数据库与 `output/` 产物。
 - `.gitignore` 已默认忽略本地运行产物与敏感目录。
+
+## Work Notes
+
+- 2026-03-06: Pending push commit on local `main` (ahead of `origin/main` by 1 commit).
+- 2026-03-06: Crawl target URL: https://x.com/hooeem/status/2029310454590579166

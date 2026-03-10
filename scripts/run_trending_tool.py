@@ -36,7 +36,8 @@ def main() -> None:
     )
     parser.add_argument("--run-date", default=datetime.now().strftime("%Y-%m-%d"), help="Hot date, e.g. 2026-03-05")
     parser.add_argument("--run-name", default="", help="Default: top<k>_<YYYYMMDD>")
-    parser.add_argument("--output-root", default="output/twitter_trending")
+    # Keep pipeline scratch data out of deliverables and out of root output clutter.
+    parser.add_argument("--output-root", default="output/_runs/twitter_trending")
     parser.add_argument("--top-k", type=int, default=3)
 
     parser.add_argument("--window", default="7d", choices=["24h", "7d", "14d", "all"])
